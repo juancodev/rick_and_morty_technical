@@ -24,10 +24,11 @@ export default function LoginLayout({ children }: ChildrenProps) {
               <div className="absolute right-0 hidden h-full min-h-screen md:block lg:w-[49vw] 2xl:w-[44vw]">
                 <div className="absolute flex h-full w-full items-end justify-center bg-cover bg-center lg:rounded-bl-[120px] xl:rounded-bl-[200px]">
                   <Image
-                    src="/images/image.jpeg"
+                    src="/images/inicio_white.jpg"
                     alt="Test"
                     className="h-full w-full"
                     fill
+                    objectFit="cover"
                   />
                 </div>
               </div>

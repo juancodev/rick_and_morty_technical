@@ -1,5 +1,5 @@
 interface ChildrenProps {
-  children: JSX.Element | JSX.Element[]
+  children: React.ReactNode
 }
 
 interface AuthenticateValues {
