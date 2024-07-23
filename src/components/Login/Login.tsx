@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { unknown, z } from "zod";
 
 import { Button } from "app/a/components/ui/button";
 import {
@@ -16,6 +16,8 @@ import {
   FormMessage,
 } from "app/a/components/ui/form";
 import { Input } from "app/a/components/ui/input";
+
+import { authenticate } from "app/utils/lib/actions";
 
 const formSchema = z.object({
   username: z
@@ -43,10 +45,10 @@ export function Login() {
     },
   });
 
-  const handleOnSubmit = (values: z.infer<typeof formSchema>) => {
-    if (values.username === "admin" && values.password === "admin123") {
-      router.push("/");
-    }
+  const handleOnSubmit = async (values: z.infer<typeof formSchema>) => {
+    await authenticate(values)
+      .then(() => router.push("/"))
+      .catch((err) => console.log(err));
   };
   return (
     <>
