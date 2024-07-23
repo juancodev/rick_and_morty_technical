@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -32,6 +33,8 @@ const formSchema = z.object({
 });
 
 export function Login() {
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -41,7 +44,9 @@ export function Login() {
   });
 
   const handleOnSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+    if (values.username === "admin" && values.password === "admin123") {
+      router.push("/");
+    }
   };
   return (
     <>
