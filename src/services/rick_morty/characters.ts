@@ -1,20 +1,19 @@
 import { rickMortyAPIUrls } from "./url";
 
-export async function getCharacters(id?: number): Promise<CharacterData[] | undefined> {
+export async function getCharacters(id?: number): Promise<CharactersData | any> {
   try {
     const apiUrl = id ? `${rickMortyAPIUrls.characters.single(id)}` : `${rickMortyAPIUrls.characters.all}`;
 
-    const response = await fetch(apiUrl, {
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
+    const response = await fetch(apiUrl)
 
-    const { results } = await response.json();
+    if (response.ok) {
 
-    return results;
+      const resultData = await response.json();
+      return resultData
+    }
+
   } catch (error) {
-
+    throw (error);
   }
 }
 

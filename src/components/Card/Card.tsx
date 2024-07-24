@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import {
   Card,
   CardContent,
@@ -19,6 +20,8 @@ export function CardComponents({
     bgColor: `bg-cyan-400`,
     colorText: `text-black`,
   });
+
+  const router = useRouter();
 
   useEffect(() => {
     switch (charactersValues?.species) {
@@ -39,10 +42,16 @@ export function CardComponents({
     }
   }, [charactersValues?.species]);
 
+  const handleClick = () => {
+    if (charactersValues?.id) {
+      router.push(`/character/${charactersValues.id}`);
+    }
+  };
+
   if (charactersValues) {
     return (
       <>
-        <Card className="w-[350px]">
+        <Card className="w-[350px] cursor-pointer" onClick={handleClick}>
           <CardHeader>
             <Image
               src={charactersValues?.image || ""}

@@ -43,6 +43,10 @@ interface CardComponentProps {
   episodesValues?: EpisodesData;
 }
 
+interface CardDetailComponentProps {
+  character: CharactersData
+}
+
 interface TableComponentProps {
   characters?: CharactersData[];
   episodes?: EpisodesData[];
@@ -70,3 +74,8 @@ interface FilterComponentsProps {
   setEpisodeData?: (EpisodeData: FilterEpisodesData) => void;
 }
 
+interface ParamsProps {
+  params: {
+    id: string | number
+  }
+}

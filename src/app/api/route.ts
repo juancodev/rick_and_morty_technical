@@ -1,10 +1,15 @@
 import { getCharacters, getCharactersByQuery } from "app/services/rick_morty/characters";
 import { getEpisodesByQuery } from "app/services/rick_morty/episodes"
 
-export async function getCharactersAPI() {
-  const characters = await getCharacters();
+export async function getCharactersAPI(id: number) {
+  if (!id) {
+    const characters = await getCharacters();
+    return characters
 
-  return characters
+  } else {
+    const character = await getCharacters(id);
+    return character;
+  }
 }
 
 export async function getCharactersAPIWithQuery(name: string = "", status: string = "", species: string = "", gender: string = "") {

@@ -1,0 +1,1 @@
+export { CardDetailComponent } from "./CardDetail";
