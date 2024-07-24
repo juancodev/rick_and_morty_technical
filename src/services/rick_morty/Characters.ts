@@ -17,3 +17,17 @@ export async function getCharacters(id?: number): Promise<CharacterData[] | unde
 
   }
 }
+
+export async function getCharactersByQuery(name: string = "", status: string = "", species: string = "", gender: string = "") {
+  try {
+    const apiUrlWithQuery = `${rickMortyAPIUrls.characters.filter(name, status, species, gender)}`;
+    const response = await fetch(apiUrlWithQuery)
+    const { results, info } = await response.json();
+    return { results, info }
+  } catch (error) {
+    console.log(error);
+  }
+
+
+
+}

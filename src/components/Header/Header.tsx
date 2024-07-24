@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Sidebar } from "app/components/Sidebar/";
+import { Button } from "app/a/components/ui/button";
 
 export function Header() {
   return (
@@ -22,7 +23,9 @@ export function Header() {
               </li>
             </div>
             <li className="mr-5">
-              <Link href="/login">Logout</Link>
+              <Button asChild className="secondary">
+                <Link href="/login">Logout</Link>
+              </Button>
             </li>
           </ul>
         </nav>

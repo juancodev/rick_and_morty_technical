@@ -28,6 +28,22 @@ interface CharactersData {
   created: string
 }
 
-interface CharactersProps extends CharactersData {
-  charactersValues: CharactersData
+interface CardComponentProps {
+  charactersValues: CharactersData;
+}
+
+interface TableComponentProps {
+  characters: CharactersData[];
+}
+
+interface FilterData {
+  name: string;
+  status?: string;
+  species?: string;
+  gender?: string;
+}
+
+interface FilterComponentsProps {
+  data: FilterData;
+  setData: (data: FilterData) => void;
 }

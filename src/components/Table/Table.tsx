@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Table,
   TableBody,
@@ -10,9 +12,7 @@ import {
 import { CardComponents } from "app/components/Card";
 import { getCharactersAPI } from "app/app/api/route";
 
-export async function TableComponent() {
-  const characters = await getCharactersAPI();
-
+export function TableComponent({ characters }: TableComponentProps) {
   return (
     <>
       <Table>

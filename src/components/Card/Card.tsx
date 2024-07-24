@@ -11,7 +11,7 @@ import {
   CardTitle,
 } from "app/a/components/ui/card";
 
-export function CardComponents({ charactersValues }: CharactersProps) {
+export function CardComponents({ charactersValues }: CardComponentProps) {
   const [colors, setColor] = useState({
     bgColor: `bg-cyan-400`,
     colorText: `text-black`,
