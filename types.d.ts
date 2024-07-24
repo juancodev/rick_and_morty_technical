@@ -28,22 +28,45 @@ interface CharactersData {
   created: string
 }
 
+interface EpisodesData {
+  id: number;
+  name: string;
+  air_date: string;
+  episode: string;
+  characters: string[];
+  url: string;
+  created: string
+}
+
 interface CardComponentProps {
-  charactersValues: CharactersData;
+  charactersValues?: CharactersData;
+  episodesValues?: EpisodesData;
 }
 
 interface TableComponentProps {
-  characters: CharactersData[];
+  characters?: CharactersData[];
+  episodes?: EpisodesData[];
 }
 
-interface FilterData {
+interface FilterCharactersData {
   name: string;
   status?: string;
   species?: string;
   gender?: string;
 }
 
-interface FilterComponentsProps {
-  data: FilterData;
-  setData: (data: FilterData) => void;
+interface FilterEpisodesData {
+  name: string;
+  episode?: string | string[];
 }
+
+interface FilterComponentsProps {
+  title?: string;
+  place: string;
+  resultFetch?: EpisodesData[] | CharactersData[]
+  characterData?: FilterCharactersData;
+  setCharacterData?: (characterData: FilterCharactersData) => void;
+  episodeData?: FilterEpisodesData;
+  setEpisodeData?: (EpisodeData: FilterEpisodesData) => void;
+}
+

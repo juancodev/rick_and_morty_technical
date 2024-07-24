@@ -27,7 +27,4 @@ export async function getCharactersByQuery(name: string = "", status: string = "
   } catch (error) {
     console.log(error);
   }
-
-
-
 }

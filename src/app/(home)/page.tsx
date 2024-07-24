@@ -10,7 +10,7 @@ import { getCharactersAPIWithQuery } from "app/app/api/route";
 export default function Home() {
   // const cookie = cookies();
   const [filteredCharacters, setFilteredCharacters] = useState([]);
-  const [filterData, setFilterData] = useState<FilterData>({
+  const [filterData, setFilterData] = useState<FilterCharactersData>({
     name: "",
     status: "",
     species: "",
@@ -35,7 +35,12 @@ export default function Home() {
   return (
     <>
       <main className="flex min-h-screen flex-col items-center">
-        <FilterComponents data={filterData} setData={setFilterData} />
+        <FilterComponents
+          title="Buscar un personaje por nombre"
+          place="character"
+          characterData={filterData}
+          setCharacterData={setFilterData}
+        />
         <TableComponent characters={filteredCharacters} />
       </main>
     </>

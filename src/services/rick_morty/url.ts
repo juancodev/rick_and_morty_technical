@@ -16,6 +16,7 @@ export const rickMortyAPIUrls = {
   episode: {
     all: `https://rickandmortyapi.com/api/episode`,
     single: (id: number) => `https://rickandmortyapi.com/api/episode/${id}`,
-    multiple: (ids: number[]) => `https://rickandmortyapi.com/api/episode/${ids}`
+    multiple: (ids: number[]) => `https://rickandmortyapi.com/api/episode/${ids}`,
+    filter: (name: string, episode: string[] | string) => `https://rickandmortyapi.com/api/episode/?name=${name}&episode=${episode}`
   }
 }
