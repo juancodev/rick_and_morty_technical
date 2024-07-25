@@ -6,7 +6,7 @@ import { Button } from "app/a/components/ui/button";
 export function Header() {
   return (
     <>
-      <header className="w-full h-16 bg-slate-700">
+      <header className="w-full h-16 bg-black/20 px-2">
         <nav>
           <ul className="flex justify-between items-center">
             <div className="flex items-center">

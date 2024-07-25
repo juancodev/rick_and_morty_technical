@@ -3,7 +3,6 @@
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -15,11 +14,12 @@ export function TableComponent({ characters, episodes }: TableComponentProps) {
   if (characters) {
     return (
       <>
-        <Table>
-          <TableCaption>A list of your recent invoices.</TableCaption>
+        <Table className="mt-4">
           <TableHeader>
             <TableRow>
-              <TableHead className="text-center">Lista de Personajes</TableHead>
+              <TableHead className="text-center text-white text-lg">
+                Lista de Personajes
+              </TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -37,11 +37,12 @@ export function TableComponent({ characters, episodes }: TableComponentProps) {
   } else if (episodes) {
     return (
       <>
-        <Table>
-          <TableCaption>A list of your recent invoices.</TableCaption>
+        <Table className="mt-4">
           <TableHeader>
             <TableRow>
-              <TableHead className="text-center">Lista de Episodios</TableHead>
+              <TableHead className="text-center text-white text-lg">
+                Lista de Episodios
+              </TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>

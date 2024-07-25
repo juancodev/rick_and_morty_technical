@@ -62,21 +62,23 @@ export function FilterComponents({
     };
     return (
       <>
-        <div className="h-32 w-full flex flex-wrap justify-between items-center gap-3 my-5 px-10">
+        <div className="h-32 max-md:h-auto w-full flex flex-wrap justify-between items-center gap-3 my-5 px-10">
           <div className="flex gap-3 text-center items-center max-w-sm space-x-2">
-            <div className="w-80 flex flex-col gap-3 items-center">
-              <Label className="text-white">{title || "Buscar..."}</Label>
+            <div className="w-80 flex flex-col gap-3 items-center max-md:mt-4">
+              <Label className="text-white max-md:text-lg">
+                {title || "Buscar..."}
+              </Label>
               <Input
-                className="border-t-0 border-x-0 rounded-none bg-slate-300/15"
+                className="border-t-0 border-x-0 rounded-none bg-transparent bg-gradient-to-b from-slate-300/20 text-white focus:outline-none placeholder:text-white max-md:w-full max-md:rounded-md"
                 placeholder="Rick Sanchez"
                 onChange={handleInputSearch}
                 value={characterData?.name}
               />
             </div>
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 max-md:w-full max-md:flex-col max-md:justify-center max-md:items-center max-md:mt-2">
             <Select onValueChange={handleSelectStatusFilter}>
-              <SelectTrigger className="w-[190px]">
+              <SelectTrigger className="w-[190px] max-md:w-full">
                 <SelectValue placeholder="Estatus del personaje" />
               </SelectTrigger>
               <SelectContent>
@@ -89,7 +91,7 @@ export function FilterComponents({
               </SelectContent>
             </Select>
             <Select onValueChange={handleSelectSpeciesFilter}>
-              <SelectTrigger className="w-[190px]">
+              <SelectTrigger className="w-[190px] max-md:w-full">
                 <SelectValue placeholder="Especie del personaje" />
               </SelectTrigger>
               <SelectContent>
@@ -110,7 +112,7 @@ export function FilterComponents({
               </SelectContent>
             </Select>
             <Select onValueChange={handleSelectGenderFilter}>
-              <SelectTrigger className="w-[190px]">
+              <SelectTrigger className="w-[190px] max-md:w-full">
                 <SelectValue placeholder="Género del personaje" />
               </SelectTrigger>
               <SelectContent>
@@ -155,9 +157,11 @@ export function FilterComponents({
         <div className="h-32 w-full flex flex-wrap justify-between items-center gap-3 my-5 px-10">
           <div className="flex gap-3 text-center items-center max-w-sm space-x-2">
             <div className="w-80 flex flex-col gap-3 items-center">
-              <Label className="text-white">{title || "Buscar..."}</Label>
+              <Label className="text-white max-md:text-lg">
+                {title || "Buscar..."}
+              </Label>
               <Input
-                className="border-t-0 border-x-0 rounded-none bg-slate-300/15"
+                className="border-t-0 border-x-0 rounded-none bg-transparent bg-gradient-to-b from-slate-300/20 text-white focus:outline-none placeholder:text-white max-md:w-full max-md:rounded-md"
                 placeholder="Pilot"
                 onChange={handleEpisodeInputSearch}
                 value={episodeData?.name}

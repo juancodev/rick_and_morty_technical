@@ -11,6 +11,7 @@ import {
   CardHeader,
   CardTitle,
 } from "app/a/components/ui/card";
+import { MapPin } from "lucide-react";
 
 export function CardComponents({
   charactersValues,
@@ -18,6 +19,10 @@ export function CardComponents({
 }: CardComponentProps) {
   const [colors, setColor] = useState({
     bgColor: `bg-cyan-400`,
+    colorText: `text-black`,
+  });
+
+  const [genderColor, setGenderColor] = useState({
     colorText: `text-black`,
   });
 
@@ -42,6 +47,32 @@ export function CardComponents({
     }
   }, [charactersValues?.species]);
 
+  useEffect(() => {
+    switch (charactersValues?.gender) {
+      case "Male":
+        setGenderColor({
+          colorText: `text-blue-600`,
+        });
+        break;
+      case "Female":
+        setGenderColor({
+          colorText: `text-pink-700`,
+        });
+        break;
+      case "Unknown":
+        setGenderColor({
+          colorText: `text-sky-900`,
+        });
+        break;
+      case "Genderless":
+        setGenderColor({
+          colorText: `text-yellow-600`,
+        });
+      default:
+        `text-black`;
+    }
+  }, [charactersValues?.gender]);
+
   const handleClick = () => {
     if (charactersValues?.id) {
       router.push(`/character/${charactersValues.id}`);
@@ -51,7 +82,10 @@ export function CardComponents({
   if (charactersValues) {
     return (
       <>
-        <Card className="w-[350px] cursor-pointer" onClick={handleClick}>
+        <Card
+          className="w-[350px] max-md:w-[300px] cursor-pointer"
+          onClick={handleClick}
+        >
           <CardHeader>
             <Image
               src={charactersValues?.image || ""}
@@ -60,7 +94,7 @@ export function CardComponents({
               height={350}
               className="relative"
             />
-            <CardTitle className="text-center">
+            <CardTitle className="text-center pt-2">
               {charactersValues?.name || episodesValues?.name}
             </CardTitle>
             <CardDescription
@@ -70,11 +104,16 @@ export function CardComponents({
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <p>{charactersValues?.location.name}</p>
-            <p>{charactersValues?.gender}</p>
+            <div className="mb-3 flex">
+              <MapPin />
+              <p className="text-lg pl-2">{charactersValues?.location.name}</p>
+            </div>
+            <p className={`${genderColor.colorText} font-bold`}>
+              {charactersValues?.gender}
+            </p>
           </CardContent>
           <CardFooter>
-            <p>Card Footer</p>
+            <p>Editar</p>
           </CardFooter>
         </Card>
       </>
@@ -97,7 +136,7 @@ export function CardComponents({
             <p>{episodesValues?.episode}</p>
           </CardContent>
           <CardFooter>
-            <p>Card Footer</p>
+            <p>Editar</p>
           </CardFooter>
         </Card>
       </>
