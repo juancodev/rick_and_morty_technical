@@ -79,3 +79,7 @@ interface ParamsProps {
     id: string | number
   }
 }
+
+interface PaginationComponentProps {
+  setCharactersPagination: (characterData) => void;
+}

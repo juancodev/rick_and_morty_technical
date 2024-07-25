@@ -27,3 +27,14 @@ export async function getCharactersByQuery(name: string = "", status: string = "
     console.log(error);
   }
 }
+
+export async function getPagination(page: string) {
+  try {
+    const apiUrlPagination = `${rickMortyAPIUrls.characters.pagination(page)}`;
+    const response = await fetch(apiUrlPagination);
+    const { results, info } = await response.json();
+    return { results, info }
+  } catch (error) {
+    throw (error);
+  }
+}

@@ -6,7 +6,8 @@ export const rickMortyAPIUrls = {
     all: `https://rickandmortyapi.com/api/character`,
     single: (id: number) => `https://rickandmortyapi.com/api/character/${id}`,
     multiple: (ids: number[]) => `https://rickandmortyapi.com/api/character/${ids}`,
-    filter: (name: string, status: string, species: string, gender: string) => `https://rickandmortyapi.com/api/character/?name=${name}&status=${status}&species=${species}&gender=${gender}`
+    filter: (name: string, status: string, species: string, gender: string) => `https://rickandmortyapi.com/api/character/?name=${name}&status=${status}&species=${species}&gender=${gender}`,
+    pagination: (numberPage: string) => `https://rickandmortyapi.com/api/character/?page=${numberPage}`
   },
   location: {
     all: `https://rickandmortyapi.com/api/location`,

@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { TableComponent } from "app/components/Table";
 import { FilterComponents } from "app/components/Filter";
 import { getCharactersAPIWithQuery } from "app/app/api/route";
+import { PaginationComponent } from "app/components/Pagination";
 
 export default function Home() {
   // const cookie = cookies();
@@ -42,6 +43,7 @@ export default function Home() {
           setCharacterData={setFilterData}
         />
         <TableComponent characters={filteredCharacters} />
+        <PaginationComponent setCharactersPagination={setFilteredCharacters} />
       </main>
     </>
   );
