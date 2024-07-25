@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { FilterComponents } from "app/components/Filter";
 import { TableComponent } from "app/components/Table";
-import { getEpisodesAPIWithQuery } from "app/app/api/route";
+import { getEpisodesByQuery } from "app/services/rick_morty/episodes";
 
 export default function Episodes() {
   const [filteredEpisodes, setFilteredEpisodes] = useState([]);
@@ -13,7 +13,7 @@ export default function Episodes() {
   });
 
   useEffect(() => {
-    getEpisodesAPIWithQuery(filterData.name, filterData.episode)
+    getEpisodesByQuery(filterData.name, filterData.episode)
       .then((response) => {
         console.log(response);
         setFilteredEpisodes(response?.results);

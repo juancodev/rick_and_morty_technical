@@ -10,16 +10,16 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "app/a/components/ui/pagination";
-import { getPaginationAPI } from "app/app/api/route";
+import { getPagination } from "app/services/rick_morty/characters";
 
 export function PaginationComponent({
   setCharactersPagination,
 }: PaginationComponentProps) {
   const [currentPage, setCurrentPage] = useState(1);
-  const [paginationInfo, setPaginationInfo] = useState({});
+  const [paginationInfo, setPaginationInfo] = useState<InfoProps>({});
 
   useEffect(() => {
-    getPaginationAPI(String(currentPage))
+    getPagination(String(currentPage))
       .then((response) => {
         setCharactersPagination(response?.results);
         setPaginationInfo(response?.info);

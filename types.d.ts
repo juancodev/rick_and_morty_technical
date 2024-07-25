@@ -83,3 +83,10 @@ interface ParamsProps {
 interface PaginationComponentProps {
   setCharactersPagination: (characterData) => void;
 }
+
+interface InfoProps {
+  count?: number;
+  pages?: string;
+  next?: string;
+  prev?: string;
+}

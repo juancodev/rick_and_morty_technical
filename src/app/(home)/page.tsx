@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { TableComponent } from "app/components/Table";
 import { FilterComponents } from "app/components/Filter";
-import { getCharactersAPIWithQuery } from "app/app/api/route";
+import { getCharactersByQuery } from "app/services/rick_morty/characters";
 import { PaginationComponent } from "app/components/Pagination";
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
   });
 
   useEffect(() => {
-    getCharactersAPIWithQuery(
+    getCharactersByQuery(
       filterData.name,
       filterData.status,
       filterData.species,
