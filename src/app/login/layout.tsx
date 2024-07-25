@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { BLUR_DATAURL } from "app/services/rick_morty/url";
 
 export default function LoginLayout({ children }: ChildrenProps) {
   return (
@@ -29,6 +30,8 @@ export default function LoginLayout({ children }: ChildrenProps) {
                     className="h-full w-full"
                     fill
                     objectFit="cover"
+                    blurDataURL={BLUR_DATAURL}
+                    placeholder="blur"
                   />
                 </div>
               </div>
