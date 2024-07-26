@@ -11,7 +11,7 @@ import {
   CardHeader,
   CardTitle,
 } from "app/a/components/ui/card";
-import { MapPin } from "lucide-react";
+import { MapPin, Tv } from "lucide-react";
 
 export function CardComponents({
   charactersValues,
@@ -129,11 +129,14 @@ export function CardComponents({
           </CardHeader>
           <CardContent className="text-center">
             <p
-              className={`border py-1 px-2 ${colors.bgColor} text-center font-semibold text-lg ${colors.colorText}`}
+              className={`border py-1 px-2 bg-sky-600 text-center font-semibold text-lg text-white mb-6`}
             >
               {episodesValues?.air_date}
             </p>
-            <p>{episodesValues?.episode}</p>
+            <div className="flex justify-center">
+              <Tv />
+              <p className="pt-1 pl-1">{episodesValues?.episode}</p>
+            </div>
           </CardContent>
           <CardFooter>
             <p>Editar</p>
