@@ -23,7 +23,6 @@ export default function HomeLayout({ children }: ChildrenProps) {
               </main>
             }
           >
-            {"use client"}
             <Header />
             <Banner />
             {children}
