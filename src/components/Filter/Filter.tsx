@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { ChangeEvent } from "react";
 import { Input } from "app/a/components/ui/input";
 import { Button } from "app/a/components/ui/button";
@@ -13,6 +14,8 @@ import {
   SelectValue,
 } from "app/a/components/ui/select";
 import { Label } from "app/a/components/ui/label";
+import { ButtonCreate } from "app/components/ButtonCreate";
+import { useCharacterState } from "app/store/characterState";
 
 export function FilterComponents({
   title,
@@ -23,6 +26,24 @@ export function FilterComponents({
   episodeData,
   setEpisodeData,
 }: FilterComponentsProps) {
+  const [filterBar, setFilterBar] = useState<boolean>(false);
+
+  const scrollFilter = () => {
+    if (window.scrollY >= 618) {
+      setFilterBar(true);
+    } else {
+      setFilterBar(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", scrollFilter);
+
+    return () => {
+      window.addEventListener("scroll", scrollFilter);
+    };
+  }, []);
+
   if (place === "character") {
     const handleInputSearch = (event: ChangeEvent<HTMLInputElement>) => {
       setCharacterData!({
@@ -62,14 +83,18 @@ export function FilterComponents({
     };
     return (
       <>
-        <div className="h-32 max-md:h-auto w-full flex flex-wrap justify-between items-center gap-3 my-5 px-10">
+        <div
+          className={`h-28 max-md:h-auto w-full flex flex-wrap justify-between items-center gap-3 my-5 px-10 ${
+            filterBar ? "fixed top-0 z-50 my-0 bg-black/30" : "bg-transparent"
+          }`}
+        >
           <div className="flex gap-3 text-center items-center max-w-sm space-x-2">
             <div className="w-80 flex flex-col gap-3 items-center max-md:mt-4">
               <Label className="text-white max-md:text-lg">
                 {title || "Buscar..."}
               </Label>
               <Input
-                className="border-t-0 border-x-0 rounded-none bg-transparent bg-gradient-to-b from-slate-300/20 text-white focus:outline-none placeholder:text-white max-md:w-full max-md:rounded-md"
+                className="border-t-0 border-x-0 rounded-md bg-transparent bg-gradient-to-b from-slate-300/20 text-white focus:outline-none placeholder:text-white max-md:w-full"
                 placeholder="Rick Sanchez"
                 onChange={handleInputSearch}
                 value={characterData?.name}
@@ -77,6 +102,7 @@ export function FilterComponents({
             </div>
           </div>
           <div className="flex flex-wrap gap-2 max-md:w-full max-md:flex-col max-md:justify-center max-md:items-center max-md:mt-2">
+            <ButtonCreate />
             <Select onValueChange={handleSelectStatusFilter}>
               <SelectTrigger className="w-[190px] max-md:w-full">
                 <SelectValue placeholder="Estatus del personaje" />
@@ -154,7 +180,11 @@ export function FilterComponents({
 
     return (
       <>
-        <div className="h-32 w-full flex flex-wrap justify-between items-center gap-3 my-5 px-10">
+        <div
+          className={`h-32 w-full flex flex-wrap justify-between items-center gap-3 my-5 px-10 ${
+            filterBar ? "fixed top-0 z-50 my-0 bg-black/30" : "bg-transparent"
+          }`}
+        >
           <div className="flex gap-3 text-center items-center max-w-sm space-x-2">
             <div className="w-80 flex flex-col gap-3 items-center">
               <Label className="text-white max-md:text-lg">

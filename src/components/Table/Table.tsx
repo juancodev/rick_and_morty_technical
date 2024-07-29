@@ -23,7 +23,13 @@ export function TableComponent({ characters, episodes }: TableComponentProps) {
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow className="flex flex-wrap justify-center">
+            <TableRow
+              className={
+                characters.length < 3
+                  ? "h-screen flex flex-wrap justify-center"
+                  : "flex flex-wrap justify-center"
+              }
+            >
               {characters?.map((item, index) => (
                 <TableCell key={index}>
                   <CardComponents charactersValues={item} />
@@ -46,7 +52,7 @@ export function TableComponent({ characters, episodes }: TableComponentProps) {
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow className="flex flex-wrap justify-center">
+            <TableRow className={"flex flex-wrap justify-center"}>
               {episodes?.map((item, index) => (
                 <TableCell key={index}>
                   <CardComponents episodesValues={item} />
