@@ -46,7 +46,7 @@ export const ButtonCreate = () => {
               <div className="grid grid-cols-3 items-center gap-4">
                 <Label htmlFor="status">Estatus</Label>
                 <Select>
-                  <SelectTrigger className="w-[190px] max-md:w-full">
+                  <SelectTrigger className="w-[190px]">
                     <SelectValue placeholder="Estatus del personaje" />
                   </SelectTrigger>
                   <SelectContent>
@@ -62,7 +62,7 @@ export const ButtonCreate = () => {
               <div className="grid grid-cols-3 items-center gap-4">
                 <Label htmlFor="species">Especie</Label>
                 <Select>
-                  <SelectTrigger className="w-[190px] max-md:w-full">
+                  <SelectTrigger className="w-[190px]">
                     <SelectValue placeholder="Especie del personaje" />
                   </SelectTrigger>
                   <SelectContent>
@@ -88,7 +88,7 @@ export const ButtonCreate = () => {
               <div className="grid grid-cols-3 items-center gap-4">
                 <Label htmlFor="gender">Género</Label>
                 <Select>
-                  <SelectTrigger className="w-[190px] max-md:w-full">
+                  <SelectTrigger className="w-[190px]">
                     <SelectValue placeholder="Género del personaje" />
                   </SelectTrigger>
                   <SelectContent>

@@ -29,7 +29,7 @@ export function FilterComponents({
   const [filterBar, setFilterBar] = useState<boolean>(false);
 
   const scrollFilter = () => {
-    if (window.scrollY >= 618) {
+    if (window.scrollY >= 618 || window.scrollY >= 349) {
       setFilterBar(true);
     } else {
       setFilterBar(false);
@@ -84,7 +84,7 @@ export function FilterComponents({
     return (
       <>
         <div
-          className={`h-28 max-md:h-auto w-full flex flex-wrap justify-between items-center gap-3 my-5 px-10 ${
+          className={`h-28 max-md:h-auto w-full flex flex-wrap justify-between items-center gap-3 mb-5 px-10 ${
             filterBar ? "fixed top-0 z-50 my-0 bg-black/30" : "bg-transparent"
           }`}
         >
