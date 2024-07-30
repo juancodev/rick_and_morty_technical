@@ -26,7 +26,7 @@ interface CharactersData {
   episode: string[]
   url: string
   created: string
-}
+}[]
 
 interface EpisodesData {
   id: number;
@@ -89,4 +89,15 @@ interface InfoProps {
   pages?: string;
   next?: string;
   prev?: string;
+}
+
+interface CharacterState {
+  characters: CharactersData[];
+  filteredCharacters: CharactersData[];
+  currentPage: number;
+  totalPages: number;
+  getCharacters: (query: FilterCharactersData) => Promise<void>;
+  filterCharacters: (filter: FilterCharactersData) => void;
+  setInitialCharacters: (page: number) => Promise<void>;
+  setPage: (page: number) => void;
 }

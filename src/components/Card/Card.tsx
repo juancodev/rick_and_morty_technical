@@ -112,9 +112,6 @@ export function CardComponents({
               {charactersValues?.gender}
             </p>
           </CardContent>
-          <CardFooter>
-            <p>Editar</p>
-          </CardFooter>
         </Card>
       </>
     );

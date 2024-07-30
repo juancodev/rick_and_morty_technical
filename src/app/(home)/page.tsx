@@ -3,11 +3,20 @@
 import { useState, useEffect } from "react";
 import { TableComponent } from "app/components/Table";
 import { FilterComponents } from "app/components/Filter";
-import { getCharactersByQuery } from "app/services/rick_morty/characters";
 import { PaginationComponent } from "app/components/Pagination";
+import { useCharacterState } from "app/store/characterState";
 
 export default function Home() {
-  const [filteredCharacters, setFilteredCharacters] = useState([]);
+  const {
+    filteredCharacters,
+    getCharacters,
+    filterCharacters,
+    setInitialCharacters,
+    currentPage,
+    totalPages,
+  } = useCharacterState();
+
+  // const [filteredCharacters, setFilteredCharacters] = useState([]);
   const [filterData, setFilterData] = useState<FilterCharactersData>({
     name: "",
     status: "",
@@ -16,15 +25,16 @@ export default function Home() {
   });
 
   useEffect(() => {
-    getCharactersByQuery(
-      filterData.name,
-      filterData.status,
-      filterData.species,
-      filterData.gender
-    )
-      .then((result) => setFilteredCharacters(result?.results))
-      .catch((err) => console.log(err));
-  }, [filterData]);
+    setInitialCharacters(currentPage);
+  }, [setInitialCharacters, currentPage]);
+
+  useEffect(() => {
+    getCharacters(filterData);
+  }, [filterData, getCharacters]);
+
+  useEffect(() => {
+    filterCharacters(filterData);
+  }, [filterData, filterCharacters]);
 
   return (
     <>
@@ -36,7 +46,7 @@ export default function Home() {
           setCharacterData={setFilterData}
         />
         <TableComponent characters={filteredCharacters} />
-        <PaginationComponent setCharactersPagination={setFilteredCharacters} />
+        <PaginationComponent setCharactersPagination={setFilterData} />
       </main>
     </>
   );
